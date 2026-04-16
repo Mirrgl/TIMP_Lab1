@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm, useFieldArray, useWatch } from "react-hook-form";
 
-const emptyValues = {
-  name: "",
-  status: false,
-  hosts: [{ value: "" }],
-};
-
 export function useCheckpointForm({ initialData, onSave }) {
   const [submitError, setSubmitError] = useState(false);
 
@@ -16,9 +10,17 @@ export function useCheckpointForm({ initialData, onSave }) {
     handleSubmit,
     reset,
     setValue,
+    getValues,
     formState: { errors, isSubmitting },
   } = useForm({
-    defaultValues: emptyValues,
+    defaultValues: {
+      name: initialData?.name ?? "",
+      status: initialData?.status ?? false,
+      hosts:
+        initialData?.hosts?.length > 0
+          ? initialData.hosts.map((host) => ({ value: host }))
+          : [{ value: "" }],
+    },
     mode: "onChange",
   });
 
@@ -31,19 +33,6 @@ export function useCheckpointForm({ initialData, onSave }) {
     control,
     name: "status",
   });
-
-  useEffect(() => {
-    if (initialData == null) return;
-
-    reset({
-      name: initialData.name ?? "",
-      status: initialData.status ?? false,
-      hosts:
-        initialData.hosts?.length > 0
-          ? initialData.hosts.map((host) => ({ value: host }))
-          : [{ value: "" }],
-    });
-  }, [initialData]);
 
   const onAddHost = () => {
     append({ value: "" });
@@ -73,6 +62,7 @@ export function useCheckpointForm({ initialData, onSave }) {
 
   return {
     register,
+    getValues,
     errors,
     fields,
     status,

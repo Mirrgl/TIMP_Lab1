@@ -13,6 +13,7 @@ export default function Card({
   submitError,
   status,
   onToggleStatus,
+  getValues
 }) {
   return (
     <form onSubmit={onSubmit} className={styles.card}>
@@ -43,7 +44,7 @@ export default function Card({
             required: "Пустое название КПП",
             pattern: {
               value: /^[А-ЯЁа-яё0-9-]+$/,
-              message: "Неверное ФИО",
+              message: "Неверное название КПП",
             },
           })}
         />
