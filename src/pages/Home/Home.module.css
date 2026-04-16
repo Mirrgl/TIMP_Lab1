@@ -1,0 +1,161 @@
+.headerActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.logoutButton {
+  border: 1px solid #d0d0d0;
+  border-radius: 18px;
+  padding: 14px 22px;
+  background: #ffffff;
+  color: #111111;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.logoutButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+}
+
+.logoutButton:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .headerActions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .logoutButton {
+    width: 100%;
+  }
+}
+
+.homePage {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+}
+
+.homeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.homeTitleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.homeSubtitle {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7b7b7b;
+}
+
+.homeTitle {
+  margin: 0;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.05;
+  color: #111111;
+}
+
+.homeTitle::after {
+  content: "";
+  display: block;
+  width: 76px;
+  height: 4px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: #111111;
+}
+
+.addCheckpointButton {
+  border: none;
+  border-radius: 18px;
+  padding: 14px 22px;
+  background: #111111;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.addCheckpointButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+}
+
+.addCheckpointButton:active {
+  transform: translateY(0);
+}
+
+.homeListWrapper {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
+}
+
+.homeList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+@media (max-width: 768px) {
+  .homePage {
+    padding: 24px 16px 36px;
+  }
+
+  .homeHeader {
+    align-items: stretch;
+  }
+
+  .homeTitle {
+    font-size: 30px;
+  }
+
+  .addCheckpointButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .homeListWrapper {
+    padding: 18px;
+    border-radius: 22px;
+  }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}

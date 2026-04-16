@@ -1,0 +1,19 @@
+:root {
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+
+  background: #ffffff;
+  color: #222222;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

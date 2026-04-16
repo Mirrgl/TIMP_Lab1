@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  min-height: 220px;
+  padding: 28px 28px 84px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #efefef;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  padding-right: 140px;
+  line-height: 1.5;
+}
+
+.title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #000000;
+  word-break: break-word;
+}
+
+.text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #4a4a4a;
+}
+
+.status {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.statusActive {
+  background-color: #1f9d55;
+}
+
+.statusInactive {
+  background-color: #d64545;
+}
+
+.actions {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  display: flex;
+  gap: 12px;
+}
+
+.iconButton {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.iconButton:hover {
+  background-color: #f5f5f5;
+}
+
+.iconButton:active {
+  transform: scale(0.96);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .card {
+    max-width: 100%;
+    min-height: auto;
+    padding: 24px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .content {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .status {
+    position: static;
+    align-self: flex-start;
+  }
+
+  .actions {
+    position: static;
+    align-self: flex-end;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}

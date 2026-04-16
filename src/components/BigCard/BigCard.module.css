@@ -1,0 +1,168 @@
+* {
+  box-sizing: border-box;
+}
+
+.errorText {
+  color: #d64545;
+}
+
+.hostActions {
+  display: flex;
+  gap: 12px;
+}
+
+.hostRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.removeButton {
+  width: auto;
+  min-width: 120px;
+  margin-top: 0;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.card {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 32px;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  border: none;
+  background: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.statusBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.statusText {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.statusButton {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.statusButton:hover {
+  opacity: 0.9;
+}
+
+.statusButton:active {
+  transform: scale(0.98);
+}
+
+.active {
+  background-color: #1f9d55;
+}
+
+.inactive {
+  background-color: #d64545;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hostsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hostsTitle {
+  margin: 0;
+}
+
+.cardInput {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1px solid #cfcfcf;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.cardInput:focus {
+  border-color: #000000;
+}
+
+.saveButton {
+  margin-top: 8px;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.saveButton:hover {
+  opacity: 0.9;
+}
+
+.saveButton:active {
+  transform: scale(0.98);
+}
