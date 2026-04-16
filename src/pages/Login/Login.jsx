@@ -11,9 +11,6 @@ export default function Login() {
     onSuccess: () => navigate("/"),
   });
 
-  console.log(import.meta.env.VITE_LOGIN);
-  console.log(import.meta.env.VITE_PASSWORD);
-
   return (
     <main className={styles.page}>
       <section className={styles.card}>

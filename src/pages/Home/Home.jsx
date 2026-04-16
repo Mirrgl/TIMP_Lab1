@@ -9,7 +9,8 @@ import reloadIcon from "../../images/reload.png";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [isErrorLoading, setIsErrorLoading] = useState(false);
+  const [isErrorDelete, setIsErrorDelete] = useState(false);
   const [checkpoints, setCheckpoints] = useState([]);
   const [needReload, setNeedReload] = useState(false);
   const navigate = useNavigate();
@@ -24,10 +25,8 @@ export default function Home() {
       setIsLoading(true);
       const response = await api.get("/checkpoints");
       setCheckpoints(response.data);
-      console.log("Данные загружены", response.data);
     } catch (error) {
-      setIsError(true);
-      console.error("Ошибка запроса:", error);
+      setIsErrorLoading(true);
     } finally {
       setIsLoading(false);
     }
@@ -41,7 +40,7 @@ export default function Home() {
         prev.filter((checkpoint) => checkpoint.id !== id),
       );
     } catch (error) {
-      console.error("Ошибка удаления:", error);
+      setIsErrorDelete(true)
     }
   }
 
@@ -50,7 +49,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    setIsError(false);
+    setIsErrorLoading(false);
+    setIsErrorDelete(false)
     loadData();
   }, [needReload]);
 
@@ -79,7 +79,7 @@ export default function Home() {
             type="button"
             className={styles.addCheckpointButton}
             onClick={() => navigate("/add")}
-            disabled={isError}
+            disabled={isErrorLoading}
           >
             + Добавить КПП
           </button>
@@ -96,8 +96,9 @@ export default function Home() {
 
       <section className={styles.homeListWrapper}>
         <ul className={styles.homeList}>
-          {isError && <h1>База данных не доступна</h1>}
-          {!isError &&
+          {isErrorLoading && <h1>База данных не доступна</h1>}
+          {isErrorDelete && <h1>Ошибка удаления</h1>}
+          {(!isErrorLoading && !isErrorDelete) &&
             checkpoints.map((checkpoint) => (
               <li key={checkpoint.id}>
                 <Card

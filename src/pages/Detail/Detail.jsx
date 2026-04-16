@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BigCard from "../../components/BigCard/BigCard.jsx";
 import Spinner from "../../components/Spinner/Spinner.jsx";
 import { useCheckpointForm } from "../../hooks/useCheckpointForm.jsx";
 import { api } from "../../utilities/api.jsx";
 
-function BigCardWithForm({ checkpoint, id }) {
+function BigCardWithForm({ checkpoint, id, navigate }) {
   const form = useCheckpointForm({
     initialData: checkpoint,
     onSave: async (formData) => {
       await api.put(`/checkpoints/${id}`, formData);
+      navigate("/")
     },
   });
 
@@ -17,6 +18,7 @@ function BigCardWithForm({ checkpoint, id }) {
 }
 
 export default function Detail() {
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(true);
   const [isErrorLoading, setErrorLoading] = useState(false);
   const { id } = useParams();
@@ -50,7 +52,7 @@ export default function Detail() {
 
   return (
     <div>
-      <BigCardWithForm checkpoint={checkpoint} id={id} />
+      <BigCardWithForm checkpoint={checkpoint} id={id} navigate={navigate} />
     </div>
   );
 }
