@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm, useFieldArray, useWatch } from "react-hook-form";
 
 export function useCheckpointForm({ initialData, onSave }) {
@@ -8,10 +8,8 @@ export function useCheckpointForm({ initialData, onSave }) {
     register,
     control,
     handleSubmit,
-    reset,
     setValue,
-    getValues,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm({
     defaultValues: {
       name: initialData?.name ?? "",
@@ -21,7 +19,7 @@ export function useCheckpointForm({ initialData, onSave }) {
           ? initialData.hosts.map((host) => ({ value: host }))
           : [{ value: "" }],
     },
-    mode: "onChange",
+    mode: "onBlur",
   });
 
   const { fields, append, remove } = useFieldArray({
@@ -62,8 +60,7 @@ export function useCheckpointForm({ initialData, onSave }) {
 
   return {
     register,
-    getValues,
-    errors,
+    control,
     fields,
     status,
     isSubmitting,

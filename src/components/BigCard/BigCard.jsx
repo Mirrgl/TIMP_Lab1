@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import styles from "./BigCard.module.css";
+import HostsList from "./Hosts";
+import { useFormState } from "react-hook-form";
 
 export default function Card({
   register,
+  control,
   fields,
-  errors,
   saveButtonText,
   onSubmit,
   onAddHost,
@@ -13,8 +15,12 @@ export default function Card({
   submitError,
   status,
   onToggleStatus,
-  getValues
 }) {
+  const { errors } = useFormState({
+    control,
+    name: "name"
+  })
+
   return (
     <form onSubmit={onSubmit} className={styles.card}>
       <div className={styles.cardHeader}>
@@ -67,36 +73,15 @@ export default function Card({
           </div>
 
           {fields.map((field, index) => (
-            <div key={field.id}>
-              <div className={styles.hostRow}>
-                <input
-                  type="text"
-                  placeholder="ФИО Охранника"
-                  className={styles.cardInput}
-                  {...register(`hosts.${index}.value`, {
-                    required: "Пустое ФИО",
-                    pattern: {
-                      value: /^[А-ЯЁа-яё -]+$/,
-                      message: "Неверное ФИО",
-                    },
-                  })}
-                />
-
-                <button
-                  type="button"
-                  className={`${styles.button} ${styles.inactive} ${styles.removeButton}`}
-                  onClick={() => onRemoveHost(index)}
-                  disabled={fields.length === 1}
-                >
-                  Удалить
-                </button>
-              </div>
-              {errors.hosts?.[index]?.value && (
-                <p className={styles.errorText}>
-                  {errors.hosts?.[index]?.value.message}
-                </p>
-              )}
-            </div>
+            <HostsList
+              key={field.id}
+              field={field}
+              index={index}
+              onRemoveHost={onRemoveHost}
+              control={control}
+              register={register}
+              fieldsLength={fields.length}
+            />
           ))}
         </div>
 
@@ -108,7 +93,7 @@ export default function Card({
           {isSubmitting ? (
             "Сохранение..."
           ) : submitError ? (
-            <p style={{ color: "tomato" }}>Ошибка сохранения</p>
+            <span style={{ color: "tomato" }}>Ошибка сохранения</span>
           ) : (
             saveButtonText
           )}
