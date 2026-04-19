@@ -10,7 +10,7 @@ function BigCardWithForm({ checkpoint, id, navigate }) {
     initialData: checkpoint,
     onSave: async (formData) => {
       await api.put(`/checkpoints/${id}`, formData);
-      navigate("/")
+      navigate("/");
     },
   });
 
@@ -18,7 +18,7 @@ function BigCardWithForm({ checkpoint, id, navigate }) {
 }
 
 export default function Detail() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [isErrorLoading, setErrorLoading] = useState(false);
   const { id } = useParams();
@@ -46,8 +46,12 @@ export default function Detail() {
     loadItem();
   }, [id]);
 
-  if (loading || isErrorLoading) {
+  if (loading) {
     return <Spinner />;
+  }
+
+  if (isErrorLoading) {
+    return navigate("/wrongPage");
   }
 
   return (
