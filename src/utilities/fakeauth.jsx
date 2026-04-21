@@ -1,15 +1,14 @@
-const LOGIN = import.meta.env.VITE_LOGIN;
-const PASSWORD = import.meta.env.VITE_PASSWORD;
+import { api } from "./api";
 
-export function loginUser(login, password) {
-  return new Promise((resolve, reject) => {
-    if (login === LOGIN && password === PASSWORD) {
-      localStorage.setItem("isAuth", "true");
-      resolve();
-    } else {
-      reject(new Error("Неверный логин или пароль"));
-    }
-  });
+export async function loginUser(login, password) {
+  const response = await api.get("/users", { params: { name: login } });
+
+  if (login == response.data[0]?.name && password == response.data[0]?.password) {
+    localStorage.setItem("isAuth", "true");
+  }
+  else {
+    throw new Error;
+  }
 }
 
 export function logoutUser() {

@@ -23,7 +23,7 @@ export function useLoginForm({ checkLogin, onSuccess }) {
     } catch (error) {
       setError("root.serverError", {
         type: "server",
-        message: error.message,
+        message: "Неверный логин или пароль",
       });
     }
   });
