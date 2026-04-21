@@ -33,6 +33,9 @@ export default function Detail() {
         setCheckpoint({
           name: response.data?.name ?? "",
           status: response.data?.status ?? false,
+          alarm: response.data?.alarm ?? "Отсутствует",
+          traffic: response.data?.traffic ?? "Средняя",
+          shiftTime: response.data?.shiftTime ?? "",
           hosts: Array.isArray(response.data?.hosts) ? response.data.hosts : [],
         });
       } catch (error) {

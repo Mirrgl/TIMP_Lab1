@@ -1,15 +1,39 @@
-import styles from './Card.module.css'
-import pencilIcon from '../../images/pencil.png'
-import trashIcon from '../../images/trash.png'
+import styles from "./Card.module.css";
+import pencilIcon from "../../images/pencil.png";
+import trashIcon from "../../images/trash.png";
+import { formatTimeSinceShift } from "../../utilities/timestamp";
 
-export default function Card({ id, name, hosts, status, onEdit, onDelete }) {
-
+export default function Card({
+  id,
+  name,
+  hosts,
+  status,
+  alarm,
+  shiftTime,
+  traffic,
+  onEdit,
+  onDelete,
+}) {
   return (
     <div className={styles.card}>
       <div className={styles.content}>
         <h2 className={styles.title}>{name}</h2>
-        <h3 className={styles.text}>Охранники на КПП:</h3>
-        {hosts.join(', ')}
+
+        <p className={styles.text}>
+          Охранники на КПП:
+          <span className={styles.valueBlock}>{hosts.join(", ")}</span>
+        </p>
+
+        <p className={styles.text}>Уровень тревоги: {alarm}</p>
+
+        <p className={styles.text}>
+          Время с последней смены:
+          <span className={styles.valueBlock}>
+            {formatTimeSinceShift(shiftTime)}
+          </span>
+        </p>
+
+        <p className={styles.text}>Пропускная способность: {traffic}</p>
       </div>
 
       <div
